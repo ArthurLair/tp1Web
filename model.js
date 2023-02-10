@@ -2,8 +2,8 @@
 // Implémenter ici les 4 classes du modèle.
 // N'oubliez pas l'héritage !
 
-function Drawing(listObject){
-    this.listObject = listObject;
+function Drawing(){
+    this.listObject = [];
 
     this.add = function (shape){
         this.listObject = this.listObject.push(shape);
@@ -12,13 +12,13 @@ function Drawing(listObject){
 }
 
 function Shape(color,thinknes){
-    this.color = 0;
-    this.thinknes = 0;
+    this.color = color;
+    this.thinknes = thinknes;
 
 }
 
 function Rectangle(color,thinknes,originX,originY,width,height){
-    Shape.call(color,thinknes);
+    Shape.call(this,color,thinknes);
 
     this.originX = originX;
     this.originY = originY;
@@ -29,7 +29,7 @@ function Rectangle(color,thinknes,originX,originY,width,height){
 }
 
 function Line(color,thinknes,originX,originY,finalX,finalY){
-    Shape.call(color,thinknes);
+    Shape.call(this,color,thinknes);
 
     this.originX = originX;
     this.originY = originY;
@@ -41,8 +41,4 @@ function Line(color,thinknes,originX,originY,finalX,finalY){
 
 }
 
-
-// mise en place des sous_class
-Rectangle.prototype= new Shape();
-Line.prototype=new Shape();
 
