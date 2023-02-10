@@ -12,17 +12,20 @@ function DnD(canvas, interactor) {
   this.pression = function (evt){
     this.initX = evt.clientX;
     this.initY = evt.clientY;
-  }.bind(this)
+    interactor.onInteractionStart(this);
+  }.bind(this);
 
   this.deplacement = function (evt){
     this.finalX = evt.clientX;
     this.finalY = evt.clientY;
-  }.bind(this)
+    interactor.onInteractionUpdate(this);
+  }.bind(this);
 
   this.relachement = function (evt){
     this.finalX = evt.clientX;
     this.finalY = evt.clientY;
-  }.bind(this)
+    interactor.onInteractionEnd(this);
+  }.bind(this);
 	// Associer les fonctions précédentes aux évènements du canvas.
 
   canvas.addEventListener('mousedown', this.pression, false);

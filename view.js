@@ -7,14 +7,13 @@ Rectangle.prototype.paint = function(ctx) {
 
     ctx.beginPath();
     ctx.rect(this.originX, this.originY, this.width, this.height);
-    ctx.fillStyle = "#FF0000";
-    ctx.fill();
     ctx.stroke();
   };
   
   Line.prototype.paint = function(ctx) {
     //TODO Manager color
-    ctx.fillStyle = this.color;
+    Shape.prototype.paint(this,ctx);
+
 
 
     ctx.beginPath();
@@ -34,7 +33,7 @@ Rectangle.prototype.paint = function(ctx) {
   };
 
   Shape.prototype.paint = function(elem,ctx){
-    ctx.fillStyle = elem.color;
+    ctx.strokeStyle = elem.color;
     ctx.lineWidth   = elem.thinknes;
   };
   

@@ -6,8 +6,14 @@ function Drawing(){
     this.listObject = [];
 
     this.add = function (shape){
-        this.listObject = this.listObject.push(shape);
-    }.bind(this)
+        // console.error("Avant Function");
+        this.listObject.push(shape);
+        // console.error("Post Function");
+    }.bind(this);
+
+    this.update= function(positionArray,newShape){
+        this.listObject[positionArray]=newShape;
+    }.bind(this);
 
 }
 
