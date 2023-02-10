@@ -16,7 +16,7 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);  // now fill the canvas
 var rec = new Rectangle('#00CCC0',5,10, 20, 50, 100);
 rec.paint(ctx);
 
-var ligne = new Rectangle('#00CCC0',5,10, 20, 50, 100 );
+var ligne = new Line('#00CCC0',5,10, 20, 50, 100 );
 ligne.paint(ctx);
 
 

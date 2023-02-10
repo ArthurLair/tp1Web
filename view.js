@@ -1,12 +1,14 @@
 
 // Implémenter ici les fonctions paint à ajouter dans chacune des classes du modèle.
 Rectangle.prototype.paint = function(ctx) {
-    console.log(this)
+    // console.log(this.originX)
     //TODO Manager color
     Shape.prototype.paint(this,ctx);
 
     ctx.beginPath();
-    ctx.rect(this.originX, this.originY,this.finalX,this.finalY);
+    ctx.rect(this.originX, this.originY, this.width, this.height);
+    ctx.fillStyle = "#FF0000";
+    ctx.fill();
     ctx.stroke();
   };
   
