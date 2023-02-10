@@ -9,8 +9,26 @@ function DnD(canvas, interactor) {
   this.finalY = 0;
 
 	// Developper les 3 fonctions gérant les événements
+  this.pression = function (evt){
+    this.initX = evt.clientX;
+    this.initY = evt.clientY;
+  }
 
+  this.deplacement = function (evt){
+    this.finalX = evt.clientX;
+    this.finalY = evt.clientY;
+  }
+
+  this.relachement = function (evt){
+    this.finalX = evt.clientX;
+    this.finalY = evt.clientY;
+  }
 	// Associer les fonctions précédentes aux évènements du canvas.
+
+  canvas.addEventListener('mousedown', this.pression, false);
+  canvas.addEventListener('mousemove', this.deplacement, false);
+  canvas.addEventListener('mouseup', this.relachement, false);
+
 };
 
 
