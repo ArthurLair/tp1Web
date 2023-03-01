@@ -10,19 +10,25 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
   this.pression = function (evt){
-    this.initX = evt.clientX;
-    this.initY = evt.clientY;
-  }.bind(this)
+    let x, y = getMousePosition(canvas, evt);
+    this.initX = x;
+    this.initY = y;
+    console.log("pression");
+    interactor.onInteractionStart(this);
+  }.bind(this);
 
   this.deplacement = function (evt){
-    this.finalX = evt.clientX;
-    this.finalY = evt.clientY;
-  }.bind(this)
+    this.finalX = evt.layerX;
+    this.finalY = evt.layerY;
+    interactor.onInteractionUpdate(this);
+  }.bind(this);
 
   this.relachement = function (evt){
-    this.finalX = evt.clientX;
-    this.finalY = evt.clientY;
-  }.bind(this)
+    this.finalX = evt.layerX;
+    this.finalY = evt.layerY;
+    console.log("relache");
+    interactor.onInteractionEnd(this);
+  }.bind(this);
 	// Associer les fonctions précédentes aux évènements du canvas.
 
   canvas.addEventListener('mousedown', this.pression, false);
