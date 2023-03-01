@@ -35,4 +35,11 @@ Rectangle.prototype.paint = function(ctx) {
     ctx.strokeStyle = elem.color;
     ctx.lineWidth   = elem.thinknes;
   };
+
+  Drawing.prototype.updateShapeList = function() {
+    var newLi = document.createElement("li");
+    newLi.appendChild(document.createElement("button"));
+    newLi.appendChild(document.createTextNode("test new"));
+    document.getElementById("shapeList").appendChild(newLi);
+  }
   

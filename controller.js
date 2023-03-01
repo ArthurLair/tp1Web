@@ -59,6 +59,7 @@ function Pencil(ctx, drawing, canvas) {
 		//console.log("ctx : " + ctx);
 
 		drawing.paint(ctx);
+		drawing.updateShapeList();
 
 		elem.initX =0;
 		elem.initY=0;
