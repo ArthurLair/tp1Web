@@ -14,7 +14,6 @@ function Pencil(ctx, drawing, canvas) {
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 
 	this.onInteractionStart = function(elem){
-		console.log(elem);
 		
 
 		switch(this.currEditingMode){
@@ -44,10 +43,13 @@ function Pencil(ctx, drawing, canvas) {
 				case editingMode.line: {
 					var line = new Line(this.currColour,this.currLineWidth,elem.initX, elem.initY, elem.finalX, elem.finalY );
 					drawing.update(this.currentShape,line);
-					// console.log(line);
 					break;
 				}
-			  }
+			}
+			if(elem.initX != 0 && elem.initY != 0 && elem.finalX != 0 && elem.finalY != 0) {
+				drawing.paint(ctx);
+			}
+			  
 		}
 		
 
@@ -68,6 +70,14 @@ function Pencil(ctx, drawing, canvas) {
 		this.currentShape++;
 		console.log(this.currentShape);
 	}.bind(this);
+
+	this.clickRect = function() {
+		this.currEditingMode = editingMode.rect;
+	}
+
+	this.clickLine = function() {
+		this.currEditingMode = editingMode.line;
+	}
 };
 
 

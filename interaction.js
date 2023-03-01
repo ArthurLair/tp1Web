@@ -10,23 +10,28 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
   this.pression = function (evt){
-    let x, y = getMousePosition(canvas, evt);
-    this.initX = x;
-    this.initY = y;
-    console.log("pression");
+
+    var mousePos = getMousePosition(canvas,evt);
+
+    this.initX = mousePos["x"];
+    this.initY = mousePos["y"];
+
     interactor.onInteractionStart(this);
   }.bind(this);
 
   this.deplacement = function (evt){
-    this.finalX = evt.layerX;
-    this.finalY = evt.layerY;
+    var mousePos = getMousePosition(canvas,evt);
+    
+    this.finalX = mousePos["x"];
+    this.finalY = mousePos["y"];
     interactor.onInteractionUpdate(this);
   }.bind(this);
 
   this.relachement = function (evt){
-    this.finalX = evt.layerX;
-    this.finalY = evt.layerY;
-    console.log("relache");
+    var mousePos = getMousePosition(canvas,evt);
+
+    this.finalX = mousePos["x"];
+    this.finalY = mousePos["y"];
     interactor.onInteractionEnd(this);
   }.bind(this);
 	// Associer les fonctions précédentes aux évènements du canvas.
@@ -34,6 +39,16 @@ function DnD(canvas, interactor) {
   canvas.addEventListener('mousedown', this.pression, false);
   canvas.addEventListener('mousemove', this.deplacement, false);
   canvas.addEventListener('mouseup', this.relachement, false);
+
+  this.clickRect = function (evt){
+    interactor.clickRect();
+  }.bind(this);
+  this.clickLine = function (evt){
+    interactor.clickLine();
+  }.bind(this);
+
+  document.getElementById("butRect").addEventListener("click", this.clickRect, false);
+  document.getElementById("butLine").addEventListener("click", this.clickLine, false);
 
 };
 

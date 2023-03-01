@@ -14,8 +14,6 @@ Rectangle.prototype.paint = function(ctx) {
     //TODO Manager color
     Shape.prototype.paint(this,ctx);
 
-
-
     ctx.beginPath();
     ctx.moveTo(this.originX, this.originY);
     ctx.lineTo(this.finalX, this.finalY);
