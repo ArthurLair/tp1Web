@@ -14,7 +14,6 @@ function Pencil(ctx, drawing, canvas) {
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 
 	this.onInteractionStart = function(elem){
-		// console.log(elem);
 		
 
 		switch(this.currEditingMode){
