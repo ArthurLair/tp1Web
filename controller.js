@@ -78,6 +78,14 @@ function Pencil(ctx, drawing, canvas) {
 	this.clickLine = function() {
 		this.currEditingMode = editingMode.line;
 	}
+
+	this.changeColor = function(color) {
+		this.currColour = color;
+	}
+
+	this.changeWidth = function(width) {
+		this.currLineWidth = width;
+	}
 };
 
 
