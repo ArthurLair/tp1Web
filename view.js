@@ -26,7 +26,7 @@ Rectangle.prototype.paint = function(ctx) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     this.listObject.forEach(function (eltDuTableau) {
       // now fill the canvas
-      console.log(eltDuTableau);
+      //console.log(eltDuTableau);
       eltDuTableau.paint(ctx);
     });
   };

@@ -32,11 +32,10 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.onInteractionUpdate= function(elem){
-		//console.log(elem);
 		if(elem.initX!=elem.finalX && elem.initY!=elem.finalY){
 			switch(this.currEditingMode){
 				case editingMode.rect: {
-					var rec = new Rectangle(this.currColour,this.currLineWidth,elem.initX, elem.initY, elem.finalX, elem.finalY);
+					var rec = new Rectangle(this.currColour,this.currLineWidth,elem.initX, elem.initY, elem.finalX-elem.initX, elem.finalY-elem.initY);
 					drawing.update(this.currentShape,rec);
 					  break;
 				}
@@ -57,7 +56,7 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.onInteractionEnd= function(elem){
-		console.log("ctx : " + ctx);
+		//console.log("ctx : " + ctx);
 
 		drawing.paint(ctx);
 
@@ -68,7 +67,7 @@ function Pencil(ctx, drawing, canvas) {
 
 
 		this.currentShape++;
-		console.log(this.currentShape);
+		//console.log(this.currentShape);
 	}.bind(this);
 
 	this.clickRect = function() {
