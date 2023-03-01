@@ -19,12 +19,12 @@ function Pencil(ctx, drawing, canvas) {
 		switch(this.currEditingMode){
 			case editingMode.rect: {
 				var rec = new Rectangle(this.currColour,this.currLineWidth,elem.initX, elem.initY, elem.finalX, elem.finalY);
-				drawing.add(rec);
+				//drawing.add(rec);
 			  	break;
 			}
 			case editingMode.line: {
 				var line = new Line(this.currColour,this.currLineWidth,elem.initX, elem.initY, elem.finalX, elem.finalY );
-				drawing.add(line);
+				//drawing.add(line);
 				break;
 			}
 		  }
