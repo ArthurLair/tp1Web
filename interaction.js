@@ -59,13 +59,12 @@ function DnD(canvas, interactor) {
   color.addEventListener("change", this.watchColorPicker, false);
 
   this.changeWidth = function(event) {
-    console.log(event.target.value);
     interactor.changeWidth(event.target.value);
   }
 
   var width = document.getElementById("spinnerWidth");
   width.addEventListener("change", this.changeWidth, false);
-
+  width.addEventListener("input", this.changeWidth, false);
 };
 
 
