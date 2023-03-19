@@ -21,14 +21,14 @@ Rectangle.prototype.paint = function(ctx) {
   };
   
   Drawing.prototype.paint = function(ctx) {
-    //console.log(this.getForms());
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    this.listObject.forEach(function (eltDuTableau) {
-      // now fill the canvas
-      //console.log(eltDuTableau);
+
+    for (eltDuTableau of this.listObject.values()) {
+      // console.log(eltDuTableau);
       eltDuTableau.paint(ctx);
-    });
+    }
+    
   };
 
   Shape.prototype.paint = function(elem,ctx){
@@ -36,10 +36,43 @@ Rectangle.prototype.paint = function(ctx) {
     ctx.lineWidth   = elem.thinknes;
   };
 
-  Drawing.prototype.updateShapeList = function() {
+  Drawing.prototype.updateShapeList = function(id,currEditingMode,iterator) {
+    // console.log(this.listObject);
+    var idNewElem = id;
+
+    // var newElemCreate = this.listObject[idNewElem];
+
+    var formeUse = ""
+
+    switch(currEditingMode){
+      case editingMode.rect: {
+        formeUse = "Rectangle"
+        break;
+      }
+      case editingMode.line: {
+        formeUse = "Line"
+        break;
+      }
+    }
+
     var newLi = document.createElement("li");
-    newLi.appendChild(document.createElement("button"));
-    newLi.appendChild(document.createTextNode("test new"));
+    newLi.id=idNewElem;
+
+    var newButton = document.createElement("button");
+    newButton.className = "btn btn-default";
+
+    newButton.addEventListener("click",function() {
+      iterator.interactionDel(idNewElem);
+    }, false);
+
+    var newSpanInButton = document.createElement("span");
+    newSpanInButton.textContent = "Suprimer";
+    newSpanInButton.className="lyphicon glyphicon-remove-sign";
+
+
+    newButton.appendChild(newSpanInButton);
+    newLi.appendChild(newButton);
+    newLi.appendChild(document.createTextNode(" "+idNewElem.toString()+ " : "+formeUse));
     document.getElementById("shapeList").appendChild(newLi);
   }
   

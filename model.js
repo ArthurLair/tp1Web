@@ -3,17 +3,21 @@
 // N'oubliez pas l'héritage !
 
 function Drawing(){
-    this.listObject = [];
+    this.listObject = new Map();
 
-    this.add = function (shape){
-        // console.error("Avant Function");
-        this.listObject.push(shape);
-        // console.error("Post Function");
+    this.add = function (id,shape){
+        this.listObject.set(id,shape);
     }.bind(this);
 
-    this.update= function(positionArray,newShape){
-        this.listObject[positionArray]=newShape;
+    this.update= function(id,newShape){
+        this.listObject.set(id,newShape);
     }.bind(this);
+
+    this.remove= function(index){
+        this.listObject.delete(index);
+    }.bind(this)
+
+
 
 }
 
